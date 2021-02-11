@@ -80,6 +80,6 @@ app.set('view engine', 'ejs')
 
 app.use('/memes', memeRouter)
 
-app.listen(3000,()=>{
+app.listen(4000,()=>{
     console.log('Serving at 3000...')
 })
