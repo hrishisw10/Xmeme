@@ -46,6 +46,7 @@ app.set('view engine', 'ejs')
 //     //res.render('index.html')
 // })
 
+
 // app.post('/add',(req,res)=>{
 //     var currData = new User({
 //         id:count,
@@ -80,6 +81,6 @@ app.set('view engine', 'ejs')
 
 app.use('/memes', memeRouter)
 
-app.listen(3000,()=>{
-    console.log('Serving at 3000...')
+app.listen(4000,()=>{
+    console.log('Serving at 4000...')
 })
