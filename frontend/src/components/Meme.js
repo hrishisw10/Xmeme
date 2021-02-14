@@ -4,9 +4,9 @@ import './Meme.css'
 function Meme(props) {
     return (
         <div className='memeView'>
-            <div><p>{props.meme.memeOwner}</p></div>
-            <div><h2>{props.meme.memeCaption}</h2></div>
-            <div><img src={props.meme.memeUrl}></img></div>
+            <div><h2>{props.meme.memeOwner}</h2></div>
+            <div><p>{props.meme.memeCaption}</p></div>
+            <div><img src={props.meme.memeUrl} alt="meme not found"></img></div>
         </div>
     )
 }
