@@ -50,16 +50,21 @@ app.set('view engine', 'ejs')
 // })
 
 app.post('/add',async (req,res)=>{
-     var currData = new Meme({
-         id:count,
-         memeOwner: req.body.memeOwner,
-         memeCaption: req.body.memeCaption,
-         memeUrl: req.body.memeUrl,
-         created_at: Date.now().toString()
-     });
-     //currData=
-     await currData.save()
-     res.send({message:"Sucessfully Saved"})
+    try {
+        var currData = new Meme({
+            id:count,
+            memeOwner: req.body.memeOwner,
+            memeCaption: req.body.memeCaption,
+            memeUrl: req.body.memeUrl,
+            created_at: Date.now().toString()
+        });
+        //currData=
+        await currData.save()
+        res.send({message:"Sucessfully Saved"})
+    } catch (error) {
+        console.log(error);
+    }
+
      //res.setHeader('Location','http://localhost:3000')
 //     .then(item => {
 //         User.find({}, (err,docs)=>{
