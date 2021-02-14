@@ -49,7 +49,7 @@ app.set('view engine', 'ejs')
 //     //res.render('index.html')
 // })
 
-app.post('/add',(req,res)=>{
+app.post('/add',async (req,res)=>{
      var currData = new Meme({
          id:count,
          memeOwner: req.body.memeOwner,
@@ -58,7 +58,8 @@ app.post('/add',(req,res)=>{
          created_at: Date.now().toString()
      });
      //currData=
-     currData.save()
+     await currData.save()
+     res.send({message:"Sucessfully Saved"})
      //res.setHeader('Location','http://localhost:3000')
 //     .then(item => {
 //         User.find({}, (err,docs)=>{
