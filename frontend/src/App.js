@@ -10,10 +10,14 @@ class App extends Component{
   return (
     
     <div className="App">
+    
+    <div className="App-header">
     <h1>Xmeme</h1>
       <MemeForm/>
+      </div>
+      <div>
       <MemeList/>
-
+      </div>
     </div>
   )
 }

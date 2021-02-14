@@ -20,7 +20,7 @@ class MemeForm extends Component{
     submitHandler = e =>{
 
         e.preventDefault()
-        formData= new FormData()
+        const formData= new FormData()
         formData.append('memeOwner', this.state.memeOwner)
         formData.append('memeCaption', this.state.memeCaption)
         formData.append('memeUrl', this.state.memeUrl)
@@ -39,6 +39,7 @@ class MemeForm extends Component{
                 //handle error
                 console.log(response);
             })
+            window.location.reload(true)
     }
 
     render() {
@@ -47,15 +48,21 @@ class MemeForm extends Component{
             <div>
                 <form action="http://localhost:4000/add" onSubmit={this.submitHandler}>
                 <div>
-                    <label for="memeOwner">memeOwner.... :</label>
+                    <div>
+                    <label for="memeOwner">User's Name </label>
+                    </div>
                     <input type="text" id="memeOwner" name="memeOwner" value={memeOwner} onChange={this.changeHandler} required/>
                 </div>
                 <div>
-                    <label for="memeCaption">memeCaption.. :</label>
+                    <div>
+                    <label for="memeCaption">Meme Caption</label>
+                    </div>
                     <input type="text" id="memeCaption" name="memeCaption" value={memeCaption} onChange={this.changeHandler} required/>
                 </div>
                 <div>
-                    <label for="memeUrl">memeUrl......... :</label>
+                    <div>
+                    <label for="memeUrl">Valid Url</label>
+                    </div>
                     <input type="text" id="memeUrl" name="memeUrl" value={memeUrl} onChange={this.changeHandler} required/>
                 </div>
                 <button type="submit" >Submit</button>
