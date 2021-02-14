@@ -18,12 +18,17 @@ class MemeForm extends Component{
     }
 
     submitHandler = e =>{
+
         e.preventDefault()
-        console.log(this.state)
+        formData= new FormData()
+        formData.append('memeOwner', this.state.memeOwner)
+        formData.append('memeCaption', this.state.memeCaption)
+        formData.append('memeUrl', this.state.memeUrl)
+        console.log(formData)
         axios({
             method: 'post',
-            url: 'http://localhost:4000',
-            data: this.state,
+            url: 'http://localhost:4000/add',
+            data: formData,
             headers: {'Content-Type': 'multipart/form-data' }
             })
             .then(function (response) {
