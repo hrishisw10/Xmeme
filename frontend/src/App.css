@@ -16,14 +16,16 @@
 .App-header {
   background-color: #282c34;
   align-items: center;
+  top: 0;
   width: 100%;
   justify-content: center;
   color: white;
   position: fixed;
 }
 
-.App-link {
-  color: #61dafb;
+.App-body {
+  margin-top: 18%;
+
 }
 
 @keyframes App-logo-spin {

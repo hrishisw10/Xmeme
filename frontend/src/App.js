@@ -15,7 +15,7 @@ class App extends Component{
     <h1>Xmeme</h1>
       <MemeForm/>
       </div>
-      <div>
+      <div className="App-body">
       <MemeList/>
       </div>
     </div>

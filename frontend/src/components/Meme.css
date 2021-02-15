@@ -4,6 +4,11 @@
     background: #e0e0e0;
 }
 img{
-    height: 28vh;
+    height: auto;
     width: auto;
+    max-width: 90%;
+    max-height: 32vh;
+}
+input{
+    width: 50%;
 }
