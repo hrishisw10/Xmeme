@@ -46,7 +46,7 @@ class MemeForm extends Component{
         const {memeOwner, memeCaption, memeUrl} = this.state
         return (
             <div>
-                <form action="http://localhost:4000/add" onSubmit={this.submitHandler}>
+                <form onSubmit={this.submitHandler}>
                 <div>
                     <div>
                     <label for="memeOwner">User's Name </label>

@@ -6,7 +6,7 @@
 img{
     height: auto;
     width: auto;
-    max-width: 90%;
+    max-width: 50vh;
     max-height: 32vh;
 }
 input{
