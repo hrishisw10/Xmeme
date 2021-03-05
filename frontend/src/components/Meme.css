@@ -3,12 +3,37 @@
     margin: 3px 20px;
     background: #e0e0e0;
 }
-img{
+img.memeImg{
+    margin-bottom: 5px;
     height: auto;
     width: auto;
     max-width: 50vh;
     max-height: 32vh;
+    min-width: 30vh;
+    min-height: 18vh;
 }
 input{
     width: 50%;
+}
+.edit{
+    color:blue;
+    float:left;
+    
+}
+.delete{
+    color: red;
+    float: right;
+}
+.memelist{
+    display: flex;
+    flex-direction: column-reverse;
+}
+img.edicon{
+    height: 30px;
+    width: 30px;
+}
+.edbutt{
+    width: 40px;
+    border: none;
+    background: #e0e0e0;
 }

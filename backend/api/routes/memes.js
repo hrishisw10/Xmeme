@@ -7,13 +7,14 @@ router.get('/',(req,res,next)=>{
     // return res.status(200).json({
     //     'message': 'Viewing all memes'
     // })
-    Meme.find().sort({created_at: -1}).limit(100)
+    Meme.find().limit(100)
         .then(memes => res.json(memes))
         .catch(err => {res.status(400).json('Error: ' + err)
             console.log(err)}
         )
 })
 
+/*
 router.post('/add',(req,res,next)=>{
     // return res.status(201).json({
     //     'memeOwner':req.body.memeOwner,
@@ -33,6 +34,6 @@ router.post('/add',(req,res,next)=>{
         .catch(err => res.status(400).json('Error: ' + err))
 
 //    count += 1;
-})
+})*/
 
 module.exports= router

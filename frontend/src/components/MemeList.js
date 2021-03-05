@@ -1,6 +1,7 @@
 import React from 'react'
 import Meme from './Meme'
 import axios from 'axios'
+import './Meme.css'
 import { useState, useEffect } from 'react'
 
 function MemeList(props) {
@@ -20,10 +21,15 @@ function MemeList(props) {
     const memesRendered = memeList.map((meme, index) => <Meme key={index} meme={meme} />)
 
     return (
-        <div>
+        <div className='memelist'>
             {memesRendered}
         </div>
     )
+}
+
+function editMeme(){
+    console.log('abc');
+
 }
 
 export default MemeList

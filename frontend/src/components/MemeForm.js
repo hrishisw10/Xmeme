@@ -65,7 +65,7 @@ class MemeForm extends Component{
                     </div>
                     <input type="text" id="memeUrl" name="memeUrl" value={memeUrl} onChange={this.changeHandler} required/>
                 </div>
-                <button type="submit" >Submit</button>
+                <button type="submit" >Post Meme</button>
                 </form>
 
             </div>
