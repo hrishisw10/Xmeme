@@ -27,7 +27,7 @@ class MemeForm extends Component{
         console.log(formData)
         axios({
             method: 'post',
-            url: 'http://localhost:4000/add',
+            url: 'http://localhost:4000/memes/add',
             data: formData,
             headers: {'Content-Type': 'multipart/form-data' }
             })
