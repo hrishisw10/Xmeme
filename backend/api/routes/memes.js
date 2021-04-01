@@ -34,20 +34,25 @@ router.post('/add',upload.none(), async (req,res)=>{
 
 
 
-router.patch('/:id/edit',(req,res)=>{
+router.patch('/:id/edit',upload.none(),async (req,res)=>{
     try{
+        console.log(req.body)
         var newData ={
             memeCaption: req.body.memeCaption,
             memeUrl: req.body.memeUrl,
             updated_at: Date.now().toString()
         };
-        var capt=req.body.memeCaption
-        console.log(req.params.id)
-        Meme.updateOne({'id':req.params.id},newData)
+        //var capt=req.body.memeCaption
+        console.log(req.body.memeOwner)
+        await Meme.updateOne({'id':req.params.id,'memeOwner':req.body.memeOwner},newData)
         .then( log => res.json(log))
         
     } catch(error){
         console.log(error);
     }
+})
+
+router.delete('/:id/delete',(req,res)=>{
+    Meme.remove({'id':req.params.id})
 })
 module.exports= router

@@ -1,24 +1,102 @@
-import React from 'react'
+import React,{ Component } from 'react'
 import './Meme.css'
 import edit from './edit-icon.png'
 import del from './delete-icon.png'
-function Meme(props) {
-    function editMeme(e){
-        e.preventDefault();
-        console.log('abc');
-    
+//import EditModal from './edit-modal';
+import Modal from 'react-modal';
+import axios from 'axios';
+
+
+class Meme extends Component {
+    constructor(props){
+        super(props);
+        //this.editMeme = this.editMeme.bind(this);
+        this.state = {
+            modalIsOpen: false,
+            memeCaption:"",
+            memeUrl:"",
+        };
     }
-    return (
+    
+    openModal = () =>{
+        this.setState({modalIsOpen: true});
+    };
+
+    closeModal = () =>{
+        this.setState({modalIsOpen: false});
+        console.log(this.props.meme.id);
+    };
+
+
+
+    changeHandler = e =>{
+        this.setState({[e.target.name]: e.target.value})
+    }
+    submitHandler = e =>{
+        console.log('clicked edit button');
+        const formData = new FormData();
+        formData.append('memeOwner',this.props.meme.memeOwner);
+        formData.append('memeCaption',this.state.memeCaption);
+        formData.append('memeUrl',this.state.memeUrl);
+        console.log(this.state.memeOwner);
+        axios({
+            method: 'patch',
+            url: 'http://localhost:4000/memes/'+this.props.meme.id+'/edit',
+            data: formData,
+            headers: {'Content-Type':'multipart/form-data'}
+            })
+            .then(function(res){
+                //handle success
+                console.log(res);
+            })
+            .catch(function(res){
+                //handle error
+                console.log(res);
+            })
+            this.setState({modalIsOpen: false});
+    }
+
+    render() {
+        return(
         <div className='memeView'>
             <div>
-                <span className="edit"><button className="edbutt" onclick={editMeme}><img src={edit} className="edicon" alt="edit"></img></button></span>
+                <span className="edit"><button className="edbutt" onClick={this.openModal}><img src={edit} className="edicon" alt="edit"></img></button></span>
+                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal}>
+                    <div>
+                        <form>
+                        <div>
+                            <div>
+                            <label for="memeOwner"><b>NAME</b>{this.props.meme.id} (cannot change)</label>
+                            </div>
+                            <input type="text" id="memeOwner" name="memeOwner" value={this.props.meme.memeOwner} onChange={this.changeHandler} disabled/>
+                        </div>
+                        <div>
+                            <div>
+                            <label for="memeCaption"><b>CAPTION</b></label>
+                            </div>
+                            <input type="text" id="memeCaption" name="memeCaption" placeholder={this.props.meme.memeCaption} onChange={this.changeHandler} required/>
+                        </div>
+                        <div>
+                            <div>
+                            <label for="memeUrl"><b>VALID URL</b></label>
+                            </div>
+                            <input type="text" id="memeUrl" name="memeUrl" placeholder={this.props.meme.memeUrl} onChange={this.changeHandler} required/>
+                        </div>
+                        <button type="submit" onClick={this.submitHandler}>Update</button>
+                        <button onClick={this.closeModal}>CLOSE</button>
+                        </form>
+
+                    </div>
+                </Modal>
+
                 <span className="delete"><button className="edbutt"><img src={del} className="edicon"></img></button></span>
             </div>
-            <div><h2>{props.meme.memeOwner}</h2> </div>
-            <div><p>{props.meme.memeCaption}</p></div>
-            <div><img className="memeImg" src={props.meme.memeUrl} alt="meme not found"></img></div>
+            <div><h2>{this.props.meme.memeOwner}</h2></div>
+            <div><p>{this.props.meme.memeCaption}</p></div>
+            <div><img className="memeImg" src={this.props.meme.memeUrl} alt="meme not found"></img></div>
         </div>
-    )
+        )
+    }
 }
 
 

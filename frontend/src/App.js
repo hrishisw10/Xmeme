@@ -2,7 +2,6 @@ import './App.css';
 import React, { Component } from 'react'
 import MemeList from './components/MemeList'
 import MemeForm from './components/MemeForm';
-
 class App extends Component{
   render() {
   return (
