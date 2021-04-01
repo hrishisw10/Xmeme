@@ -32,13 +32,13 @@ class Meme extends Component {
     changeHandler = e =>{
         this.setState({[e.target.name]: e.target.value})
     }
-    submitHandler = e =>{
-        console.log('clicked edit button');
+    editHandler = e =>{
+        //console.log('clicked edit button');
         const formData = new FormData();
         formData.append('memeOwner',this.props.meme.memeOwner);
         formData.append('memeCaption',this.state.memeCaption);
         formData.append('memeUrl',this.state.memeUrl);
-        console.log(this.state.memeOwner);
+        //console.log(this.state.memeOwner);
         axios({
             method: 'patch',
             url: 'http://localhost:4000/memes/'+this.props.meme.id+'/edit',
@@ -54,6 +54,25 @@ class Meme extends Component {
                 console.log(res);
             })
             this.setState({modalIsOpen: false});
+            window.location.reload(true);
+    }
+
+    deleteHandler = e =>{
+        axios.delete('http://localhost:4000/memes/'+this.props.meme.id+'/'+this.props.meme.memeOwner+'/delete')
+        .then(function(res){
+            //handle success
+            console.log(res);
+        })
+        .catch(function(res){
+            //handle error
+            console.log(res);
+        })
+        this.setState({modalIsOpen: false});
+        window.location.reload(true);
+        /**axios({
+            method:'delete',
+            url: 'http://localhost:4000/memes/'+this.props.meme.id+'/'+this.props.meme.memeOwner+'/delete',
+        })**/
     }
 
     render() {
@@ -82,14 +101,14 @@ class Meme extends Component {
                             </div>
                             <input type="text" id="memeUrl" name="memeUrl" placeholder={this.props.meme.memeUrl} onChange={this.changeHandler} required/>
                         </div>
-                        <button type="submit" onClick={this.submitHandler}>Update</button>
+                        <button type="submit" onClick={this.editHandler}>UPDATE</button>
+                        <button onClick={this.deleteHandler}>DELETE</button>
                         <button onClick={this.closeModal}>CLOSE</button>
                         </form>
 
                     </div>
                 </Modal>
 
-                <span className="delete"><button className="edbutt"><img src={del} className="edicon"></img></button></span>
             </div>
             <div><h2>{this.props.meme.memeOwner}</h2></div>
             <div><p>{this.props.meme.memeCaption}</p></div>

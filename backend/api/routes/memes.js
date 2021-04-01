@@ -52,7 +52,14 @@ router.patch('/:id/edit',upload.none(),async (req,res)=>{
     }
 })
 
-router.delete('/:id/delete',(req,res)=>{
-    Meme.remove({'id':req.params.id})
+
+
+router.delete('/:id/:memeOwner/delete',(req,res)=>{
+    console.log(req.params.id,req.params.memeOwner)
+    Meme.deleteOne({'id':req.params.id,'memeOwner':req.params.memeOwner})
+    .then(log => res.json(log))
 })
+
+
+
 module.exports= router
