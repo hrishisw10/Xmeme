@@ -15,5 +15,15 @@
 
 .App-body {
   margin-top: 300px;
+  background-color: cornsilk;
 }
 
+#x {
+  color: violet
+}
+#m{
+  color: springgreen
+}
+#e{
+  color: tomato
+}

@@ -8,7 +8,7 @@ const app = express()
 const dotenv = require('dotenv')
 dotenv.config()
 const port = process.env.PORT
-const dburl = process.env.DB_URL_CLOUD
+const dburl = process.env.DB_URL_CLOUD || "mongodb://127.0.0.1:27017"
 
 //importing the body-parser module to parse data from the webpage body
 const bodyParser = require('body-parser')
@@ -24,7 +24,6 @@ connection.once('open', () => {
     console.log('Connected to mongodb')
 })
 
-
 const users = []
 
 app.use(cors())
@@ -37,27 +36,6 @@ app.get('/',(req,res)=>{
     res.render('home.ejs')
 })
 
-/*
-app.post('/add',upload.none(),async (req,res)=>{
-    try {
-        console.log(req.body);
-        var currData = new Meme({
-            id:Date.now(),
-            memeOwner: req.body.memeOwner,
-            memeCaption: req.body.memeCaption,
-            memeUrl: req.body.memeUrl,
-            created_at: Date.now().toString()
-        });
-        await currData.save()
-        res.send({message:"Sucessfully Saved"})
-        count+=1;
-        
-    } catch (error) {
-        console.log(error);
-    }
-
- })
-*/
 app.use('/memes', memeRouter)
 
 app.listen(port,()=>{

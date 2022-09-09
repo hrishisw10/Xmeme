@@ -11,6 +11,7 @@ router.get('/',(req,res,next)=>{
         .catch(err => {res.status(400).json('Error: ' + err)
             console.log(err)}
         )
+        console.log("GET method here!. Yay! I got a hit");
 })
 
 router.post('/add',upload.none(), async (req,res)=>{

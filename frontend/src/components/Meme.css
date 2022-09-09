@@ -12,13 +12,17 @@ img.memeImg{
     min-width: 30vh;
     min-height: 18vh;
 }
-input{
+input#outer{
     width: 50%;
 }
+input#inner{
+    width: 100%;
+    background-color: antiquewhite;
+    color: black;
+}
 .edit{
-    color:blue;
-    float:left;
-    
+    color: blue;
+    float: right;
 }
 .delete{
     color: red;
@@ -33,7 +37,34 @@ img.edicon{
     width: 30px;
 }
 .edbutt{
-    width: 40px;
+    width: 50px;
     border: none;
-    background: #e0e0e0;
+    background: none;
+    margin: 0
+}
+#modal{
+    max-width: 80vh;
+    max-height: 40vh;
+    min-width: 50vh;
+    min-height: 35vh;
+    margin: auto;
+}
+button{
+    background-color: #282c34;
+    margin: 10px 20px 0 0;
+    border: 1px solid white;
+    color: springgreen;
+}
+label{
+    margin: 10px 20px 0 0;
+}
+#neon{
+    background-color: springgreen;
+    height: 17px;
+    color: tomato;
+}
+#tomato{
+    background-color: tomato;
+    height: 17px;
+    color: tomato;
 }

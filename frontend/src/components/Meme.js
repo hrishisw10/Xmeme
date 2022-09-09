@@ -78,40 +78,39 @@ class Meme extends Component {
     render() {
         return(
         <div className='memeView'>
+            <span className="edit"><button className="edbutt" onClick={this.openModal}><img src={edit} className="edicon" alt="edit"></img></button></span>
+                <div id="neon">.</div><div id="tomato">.</div>
             <div>
-                <span className="edit"><button className="edbutt" onClick={this.openModal}><img src={edit} className="edicon" alt="edit"></img></button></span>
-                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal}>
+                <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} id="modal">
                     <div>
                         <form>
-                        <div>
                             <div>
-                            <label for="memeOwner"><b>NAME</b>{this.props.meme.id} (cannot change)</label>
+                                <div>
+                                    <label for="memeOwner"><b>User's Name</b>(cannot change)</label>
+                                </div>
+                                <input type="text" id="inner" name="memeOwner" value={this.props.meme.memeOwner} onChange={this.changeHandler} disabled/>
                             </div>
-                            <input type="text" id="memeOwner" name="memeOwner" value={this.props.meme.memeOwner} onChange={this.changeHandler} disabled/>
-                        </div>
-                        <div>
                             <div>
-                            <label for="memeCaption"><b>CAPTION</b></label>
+                                <div>
+                                    <label for="memeCaption"><b>Meme Caption</b></label>
+                                </div>
+                                <input type="text" id="inner" name="memeCaption" placeholder={this.props.meme.memeCaption} onChange={this.changeHandler} required/>
                             </div>
-                            <input type="text" id="memeCaption" name="memeCaption" placeholder={this.props.meme.memeCaption} onChange={this.changeHandler} required/>
-                        </div>
-                        <div>
                             <div>
-                            <label for="memeUrl"><b>VALID URL</b></label>
+                                <div>
+                                    <label for="memeUrl"><b>Valid Url</b></label>
+                                </div>
+                                <input type="text" id="inner" name="memeUrl" placeholder={this.props.meme.memeUrl} onChange={this.changeHandler} required/>
                             </div>
-                            <input type="text" id="memeUrl" name="memeUrl" placeholder={this.props.meme.memeUrl} onChange={this.changeHandler} required/>
-                        </div>
-                        <button type="submit" onClick={this.editHandler}>UPDATE</button>
-                        <button onClick={this.deleteHandler}>DELETE</button>
-                        <button onClick={this.closeModal}>CLOSE</button>
+                            <button type="submit" onClick={this.editHandler}>UPDATE</button>
+                            <button onClick={this.deleteHandler}>DELETE</button>
+                            <button onClick={this.closeModal}>CLOSE</button>
                         </form>
-
                     </div>
                 </Modal>
-
             </div>
             <div><h2>{this.props.meme.memeOwner}</h2></div>
-            <div><p>{this.props.meme.memeCaption}</p></div>
+            <div><h6>{this.props.meme.memeCaption}</h6></div>
             <div><img className="memeImg" src={this.props.meme.memeUrl} alt="meme not found"></img></div>
         </div>
         )

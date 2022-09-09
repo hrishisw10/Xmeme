@@ -8,12 +8,12 @@ class App extends Component{
     
     <div className="App">
     
-    <div className="App-header">
-    <h1>Xmeme</h1>
-      <MemeForm/>
+      <div className="App-header">
+        <h1><span id="x">X</span><span id="m">m</span><span id="e">e</span><span id="m">m</span><span id="e">e</span></h1>
+        <MemeForm/>
       </div>
       <div className="App-body">
-      <MemeList/>
+        <MemeList/>
       </div>
     </div>
   )
