@@ -18,6 +18,10 @@ const memeSchema = new Schema({
         required: true,
         trim: true
     },
+    memeComments:{
+        type: Array,
+        trim: true
+    },
     created_at: String,
     updated_at: String
 })

@@ -6,11 +6,12 @@
 img.memeImg{
     margin-bottom: 5px;
     height: auto;
-    width: auto;
+    width: 80%;
     max-width: 50vh;
     max-height: 32vh;
     min-width: 30vh;
     min-height: 18vh;
+    border:1px solid white;
 }
 input#outer{
     width: 50%;
@@ -43,17 +44,19 @@ img.edicon{
     margin: 0
 }
 #modal{
+    width:80%;
     max-width: 80vh;
     max-height: 40vh;
-    min-width: 50vh;
+    min-width: 10vh;
     min-height: 35vh;
     margin: auto;
 }
 button{
     background-color: #282c34;
-    margin: 10px 20px 0 0;
+    margin: 10px 20px 5px 0;
     border: 1px solid white;
     color: springgreen;
+    width: auto;
 }
 label{
     margin: 10px 20px 0 0;

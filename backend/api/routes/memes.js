@@ -22,6 +22,7 @@ router.post('/add',upload.none(), async (req,res)=>{
             memeOwner: req.body.memeOwner,
             memeCaption: req.body.memeCaption,
             memeUrl: req.body.memeUrl,
+            memeComments: [],
             created_at: Date.now().toString()
         });
         await currData.save()
@@ -35,7 +36,7 @@ router.post('/add',upload.none(), async (req,res)=>{
 
 
 
-router.patch('/:id/edit',upload.none(),async (req,res)=>{
+ router.patch('/:id/edit',upload.none(),async (req,res)=>{
     try{
         console.log(req.body)
         var newData ={
@@ -46,19 +47,34 @@ router.patch('/:id/edit',upload.none(),async (req,res)=>{
         //var capt=req.body.memeCaption
         console.log(req.body.memeOwner)
         await Meme.updateOne({'id':req.params.id,'memeOwner':req.body.memeOwner},newData)
-        .then( log => res.json(log))
-        
+        .then( log => res.json(log))   
+    
     } catch(error){
         console.log(error);
     }
 })
 
 
-
 router.delete('/:id/:memeOwner/delete',(req,res)=>{
     console.log(req.params.id,req.params.memeOwner)
     Meme.deleteOne({'id':req.params.id,'memeOwner':req.params.memeOwner})
     .then(log => res.json(log))
+})
+
+router.patch('/:id/comments',upload.none(),async (req,res)=>{
+    try{
+        console.log(req.body)
+        var comments ={
+            memeComments: req.body.memeComments.split(',')
+        };
+        //var capt=req.body.memeCaption
+        console.log(req.body.memeOwner)
+        await Meme.updateOne({'id':req.params.id,'memeOwner':req.body.memeOwner},comments)
+        .then( log => res.json(log))
+        
+    } catch(error){
+        console.log(error);
+    }
 })
 
 

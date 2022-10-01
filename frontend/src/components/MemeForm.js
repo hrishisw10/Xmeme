@@ -49,19 +49,19 @@ class MemeForm extends Component{
                 <form onSubmit={this.submitHandler}>
                 <div>
                     <div>
-                    <label for="memeOwner">User's Name </label>
+                    <label htmlFor="memeOwner">User's Name </label>
                     </div>
                     <input type="text" id="outer" name="memeOwner" value={memeOwner} onChange={this.changeHandler} required/>
                 </div>
                 <div>
                     <div>
-                    <label for="memeCaption">Meme Caption</label>
+                    <label htmlFor="memeCaption">Meme Caption</label>
                     </div>
                     <input type="text" id="outer" name="memeCaption" value={memeCaption} onChange={this.changeHandler} required/>
                 </div>
                 <div>
                     <div>
-                    <label for="memeUrl">Valid Url</label>
+                    <label htmlFor="memeUrl">Valid Url</label>
                     </div>
                     <input type="text" id="outer" name="memeUrl" value={memeUrl} onChange={this.changeHandler} required/>
                 </div>
