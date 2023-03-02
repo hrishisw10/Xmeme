@@ -76,7 +76,4 @@ router.patch('/:id/comments',upload.none(),async (req,res)=>{
         console.log(error);
     }
 })
-
-
-
 module.exports= router
